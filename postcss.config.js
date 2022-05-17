@@ -4,6 +4,6 @@ module.exports = {
     autoprefixer: {},
   },
   content: [
-    "./src/components/**/*.{js,ts,jsx,tsx}",
+    './src/**/*.{js,ts,jsx,tsx}',
   ],
 }
