@@ -9,6 +9,7 @@ type Props = {
   isRevealing?: boolean
   isCompleted?: boolean
   position?: number
+  isShaded?: boolean
 }
 
 export const Cell = ({
@@ -17,6 +18,7 @@ export const Cell = ({
   isRevealing,
   isCompleted,
   position = 0,
+  isShaded = false
 }: Props) => {
   const isFilled = value && !isCompleted
   const shouldReveal = isRevealing && isCompleted
@@ -26,6 +28,7 @@ export const Cell = ({
   const classes = classnames(
     'w-14 h-14 border-solid border-2 flex items-center justify-center mx-0.5 text-4xl font-bold rounded dark:text-white',
     {
+      'bg-slate-100/75 dark:bg-slate-800/75': isShaded,
       'bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-600':
         !status,
       'border-black dark:border-slate-100': value && !status,
@@ -51,4 +54,12 @@ export const Cell = ({
       </div>
     </div>
   )
+}
+
+export const isShaded = (position: number) => {
+  const single_word_length = 5
+  const prefix_suffix_length = 2
+  const shaded_min = single_word_length - prefix_suffix_length
+  const shaded_max = shaded_min + prefix_suffix_length
+  return position >= shaded_min && position < shaded_max
 }

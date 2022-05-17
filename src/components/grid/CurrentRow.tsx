@@ -1,4 +1,4 @@
-import { Cell } from './Cell'
+import { Cell, isShaded } from './Cell'
 import { solution, unicodeSplit } from '../../lib/words'
 
 type Props = {
@@ -17,7 +17,7 @@ export const CurrentRow = ({ guess, className }: Props) => {
         <Cell key={i} value={letter} />
       ))}
       {emptyCells.map((_, i) => (
-        <Cell key={i} />
+        <Cell key={i} isShaded={isShaded(emptyCells.length - i - 1)} />
       ))}
     </div>
   )

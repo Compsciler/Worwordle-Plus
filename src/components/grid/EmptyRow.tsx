@@ -1,5 +1,5 @@
 import { solution } from '../../lib/words'
-import { Cell } from './Cell'
+import { Cell, isShaded } from './Cell'
 
 export const EmptyRow = () => {
   const emptyCells = Array.from(Array(solution.length))
@@ -7,7 +7,7 @@ export const EmptyRow = () => {
   return (
     <div className="flex justify-center mb-1">
       {emptyCells.map((_, i) => (
-        <Cell key={i} />
+        <Cell key={i} isShaded={isShaded(i)} />
       ))}
     </div>
   )
