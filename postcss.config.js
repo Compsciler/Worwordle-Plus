@@ -3,4 +3,7 @@ module.exports = {
     tailwindcss: {},
     autoprefixer: {},
   },
+  content: [
+    "./src/components/**/*.{js,ts,jsx,tsx}",
+  ],
 }
