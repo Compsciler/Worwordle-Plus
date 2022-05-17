@@ -5,4 +5,7 @@ module.exports = {
     extend: {},
   },
   plugins: [],
+  content: [
+    "./src/components/**/*.{js,ts,jsx,tsx}",
+  ],
 }
