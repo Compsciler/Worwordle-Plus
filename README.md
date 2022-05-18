@@ -16,12 +16,12 @@ This is an enhanced clone project (forked from [here](https://github.com/cwacker
 8. [.env](.env): Update `REACT_APP_GAME_NAME`, `REACT_APP_GAME_DESCRIPTION`
 9. [public/manifest.json](public/manifest.json): Update `name`, `short_name`
 10. [src/services/scores.js](src/services/scores.js): Update `baseUrl`
-11. [src/components/modals/InfoModal.tsx](src/components/modals/InfoModal.tsx): Update tutorial in InfoModal (JSX Element) 
+11. [src/components/modals/InfoModal.tsx](src/components/modals/InfoModal.tsx): Update tutorial and GitHub link in InfoModal (JSX Element) 
 12. [src/constants/](src/constants/): Update files
 13. [Heroku App Dashboard](https://dashboard.heroku.com/): Under the settings tab, update the config vars `REACT_APP_GAME_NAME`, `REACT_APP_GAME_DESCRIPTION`, `MONGODB_URI`, `NODE_ENV=production`
 14. Terminal: Commit files and run `git push heroku main`
 
-Advanced variant changes (such as adding a new language or new rules) will involve changing more components. To generate a new word list based on the existing word lists, write the `get_word_list()` function in `wordlistgenerator/main.py` and run `python3 wordlistgenerator/main.py` to get a JSON file of the new word list.
+Advanced variant changes (such as adding a new language or new rules) will involve changing more components.
 
 ### Step 1 commands
 
@@ -35,6 +35,26 @@ $> git remote add origin <new remote GitHub URL>
 $> git remote -v
 $> git push -u origin main
 ```
+
+### Generating new word lists based on existing word lists
+
+1. Terminal: Run `cd wordlistgenerator`
+2. (Optional) If using different word lists, use [arraytojsonfile.js](wordlistgenerator/arraytojsonfile.js) or another method to create json files of the word lists ([constants/combinedwordlist.json](wordlistgenerator/constants/combinedwordlist.json) is NYT list merged with roughly the first half of the word list currently in use)
+3. [main.py](wordlistgenerator/main.py): Write `get_word_list()` function and optionally modify other properties of the file
+4. Terminal: Run `python3 main.py` to get a JSON file of the new word lists
+5. [src/constants/](src/constants/): Update [src/constants/wordlist.ts](src/constants/wordlist.ts) and [src/constants/validGuesses.ts](src/constants/validGuesses.ts) with the arrays from the new JSON files
+
+### Syncing fork with changes to this repo
+
+[Original tutorial](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/syncing-a-fork)
+
+Terminal:
+1. Run `git fetch upstream`
+2. If on separate branch, run `git checkout main`
+3. Commit changes or run `git stash`
+4. Run `git merge upstream/main` and resolve any merge conflicts
+5. If ran `git stash` for Step 3, run `git stash pop`
+
 
 ## Build and run
 
