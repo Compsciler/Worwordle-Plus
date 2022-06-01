@@ -58,7 +58,7 @@ export const Cell = ({
 
 export const isShaded = (position: number) => {
   const single_word_length = 5
-  const prefix_suffix_length = 2
+  const prefix_suffix_length = 3
   const shaded_min = single_word_length - prefix_suffix_length
   const shaded_max = shaded_min + prefix_suffix_length
   return position >= shaded_min && position < shaded_max
