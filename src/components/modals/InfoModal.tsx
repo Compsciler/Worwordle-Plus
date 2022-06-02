@@ -36,18 +36,18 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
           <Cell
             isRevealing={true}
             isCompleted={true}
-            value="S"
+            value="D"
             status="correct"
           />
           <Cell value="I" />
+          <Cell value="V" />
+          <Cell value="E" />
           <Cell value="R" />
+          <Cell value="S" />
           <Cell value="E" />
-          <Cell value="N" />
-          <Cell value="E" />
-          <Cell value="W" />
         </div>
         <p className="text-sm text-gray-500 dark:text-gray-300">
-          The letter S is in the word and in the correct spot.
+          The letter D is in the word and in the correct spot.
         </p>
 
         <div className="flex justify-center mb-1 mt-4">
