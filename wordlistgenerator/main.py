@@ -4,7 +4,8 @@ from jsonfilelist import json_file_to_list, list_to_json_file
 
 random.seed(0)
 
-old_word_list_json_file = 'constants/combinedwordlist.json'
+old_combined_word_list_json_file = 'constants/combinedwordlist.json'
+old_word_list_json_file = 'constants/nytwordlist.json'
 new_word_list_file = 'constants/wordlist.json'
 
 old_valid_guesses_json_file = 'constants/oldvalidGuesses.json'
@@ -40,9 +41,26 @@ def get_word_list(old_word_list):
     
     return new_word_list
 
+def swap_word_into_list(word, index, word_list):
+    if word in word_list:
+        word_index_in_list = word_list.index(word)
+        word_list[index], word_list[word_index_in_list] = word_list[word_index_in_list], word_list[index]
+    else:
+        word_list.append(word_list[index])
+        word_list[index] = word     
+
+old_combined_word_list = json_file_to_list(old_combined_word_list_json_file)
+new_combined_word_list = get_word_list(old_combined_word_list)
+random.shuffle(new_combined_word_list)
+
 old_word_list = json_file_to_list(old_word_list_json_file)
 new_word_list = get_word_list(old_word_list)
 random.shuffle(new_word_list)
+
+swap_index_start, swap_index_end = 150, 154
+for i in range(swap_index_start, swap_index_end):
+    swap_word_into_list(new_combined_word_list[i], i, new_word_list)
+
 list_to_json_file(new_word_list, new_word_list_file)
 
 # print(sorted(prefix_freq.items(), key=lambda kv: kv[1], reverse=True))
