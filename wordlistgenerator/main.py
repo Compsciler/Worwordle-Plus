@@ -4,11 +4,14 @@ from jsonfilelist import json_file_to_list, list_to_json_file
 
 random.seed(0)
 
-old_word_list_json_file = 'constants/combinedwordlist.json'
+old_combined_word_list_json_file = 'constants/combinedwordlist.json'
+old_word_list_json_file = 'constants/nytwordlist.json'
 new_word_list_file = 'constants/wordlist.json'
 
 old_valid_guesses_json_file = 'constants/oldvalidGuesses.json'
 new_valid_guesses_file = 'constants/validGuesses.json'
+
+prefix_suffix_freq, prefix_suffix_freq0, prefix_suffix_freq1 = defaultdict(int), defaultdict(int), defaultdict(int)
 
 def get_word_list(old_word_list):
     prefix_suffix_length = 2
@@ -30,13 +33,39 @@ def get_word_list(old_word_list):
             for word1 in words1:
                 word = word1 + word2[prefix_suffix_length:]
                 new_word_list.append(word)
+                
+                prefix_suffix_freq[word2[:prefix_suffix_length]] += 1
+                prefix_suffix_freq0[word2[0]] += 1
+                prefix_suffix_freq1[word2[1]] += 1
     
     return new_word_list
+
+def swap_word_into_list(word, index, word_list):
+    if word in word_list:
+        word_index_in_list = word_list.index(word)
+        word_list[index], word_list[word_index_in_list] = word_list[word_index_in_list], word_list[index]
+    else:
+        word_list.append(word_list[index])
+        word_list[index] = word     
+
+old_combined_word_list = json_file_to_list(old_combined_word_list_json_file)
+new_combined_word_list = get_word_list(old_combined_word_list)
+random.shuffle(new_combined_word_list)
 
 old_word_list = json_file_to_list(old_word_list_json_file)
 new_word_list = get_word_list(old_word_list)
 random.shuffle(new_word_list)
+
+swap_index_start, swap_index_end = 135, 149
+swap_word_into_list(new_combined_word_list[0], 0, new_word_list)
+for i in range(swap_index_start, swap_index_end):
+    swap_word_into_list(new_combined_word_list[i], i, new_word_list)
+
 list_to_json_file(new_word_list, new_word_list_file)
+
+# print(sorted(prefix_suffix_freq.items(), key=lambda kv: kv[1], reverse=True))
+# print(sorted(prefix_suffix_freq0.items(), key=lambda kv: kv[1], reverse=True))
+# print(sorted(prefix_suffix_freq1.items(), key=lambda kv: kv[1], reverse=True))
 
 old_valid_guesses = json_file_to_list(old_valid_guesses_json_file)
 new_valid_guesses = get_word_list(old_valid_guesses)
