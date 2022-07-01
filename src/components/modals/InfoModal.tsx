@@ -20,14 +20,14 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
           where the last two letters of the first word match the first two letters of the second word.
         </p>
         <p className="text-sm text-gray-500 dark:text-gray-300">
-          For example, the word FRESHEEP is the word FRESH merged with the word SHEEP.
+          For example, the word GECKOALA is the word GECKO merged with the word KOALA.
         </p>
 
         <div className="flex justify-center mb-1 mt-4">
           <Cell
             isRevealing={true}
             isCompleted={true}
-            value="W"
+            value="F"
             status="correct"
           />
           <Cell value="I" />
@@ -39,7 +39,7 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
           <Cell value="A" />
         </div>
         <p className="text-sm text-gray-500 dark:text-gray-300">
-          The letter W is in the word and in the correct spot.
+          The letter F is in the word and in the correct spot.
         </p>
 
         <div className="flex justify-center mb-1 mt-4">
