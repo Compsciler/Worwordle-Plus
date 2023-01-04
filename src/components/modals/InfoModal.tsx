@@ -23,7 +23,7 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
           Guess the combined 7-letter word in 6 tries. After each guess, the color of the tiles will
           change to show how close your guess was to the word.
         </p>
-        <br/>
+        <br />
         <p className="text-sm text-gray-500 dark:text-gray-300">
           All words and guesses are the result of merging two 5-letter words together,
           where the last three letters of the first word match the first three letters of the second word.

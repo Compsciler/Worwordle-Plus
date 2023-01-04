@@ -3,13 +3,26 @@ import { VALID_GUESSES } from '../constants/validGuesses'
 import { WRONG_SPOT_MESSAGE, NOT_CONTAINED_MESSAGE } from '../constants/strings'
 import { getGuessStatuses } from './statuses'
 import { default as GraphemeSplitter } from 'grapheme-splitter'
+// import { isValidKey } from '../components/keyboard/Keyboard'
 
 export const isWordInWordList = (word: string) => {
   return (
-    WORDS.includes(localeAwareLowerCase(word)) ||
     VALID_GUESSES.includes(localeAwareLowerCase(word))
   )
 }
+
+/*
+export const isWordInWordList = (word: string) => {
+  return (
+    WORDS.includes(localeAwareLowerCase(word)) ||
+    isValidWord(word, solution)
+  )
+}
+
+export const isValidWord = (word: string, solution: string) => {
+  return word.length === solution.length && word.split('').every(isValidKey);
+}
+*/
 
 export const isWinningWord = (word: string, solution: string) => {
   return word === solution
@@ -79,6 +92,12 @@ export const localeAwareUpperCase = (text: string) => {
 }
 
 export const getWordBySolutionIndex = (solutionIndex: number) => {
+  if (solutionIndex < 0 || solutionIndex >= WORDS.length) {
+    return {
+      solution: '',
+      solutionIndex: -1
+    }
+  }
   return {
     solution: localeAwareUpperCase(WORDS[solutionIndex]),
     solutionIndex: solutionIndex,
