@@ -13,6 +13,6 @@ All words and guesses are the result of merging two 5-letter words together,
 where the last three letters of the first word match the first three letters of the second word.
 For example, the word SIRENEW is the word SIREN merged with the word RENEW.
 
-[**Play the daily game here!**](https://worwordleplus.herokuapp.com/)
+[**Play the daily game here!**](https://worwordleplus.netlify.app)
 
 This is one of the Wordle variants I have made. The other games and instructions for creating your own Wordle variant can be found [here](https://github.com/Compsciler/Wordle-With-Score-Database/).
