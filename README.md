@@ -1,7 +1,7 @@
 # Worwordle+
 
 Play the
-<a href="https://worwordle.herokuapp.com/" className="underline font-bold">
+<a href="https://worwordle.netlify.app/" className="underline font-bold">
   original Worwordle
 </a> 
 first if you haven't already!

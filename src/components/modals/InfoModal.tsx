@@ -12,7 +12,7 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
       <div className="md:max-w-3xl sm:max-w-lg">
         <p className="text-sm text-gray-500 dark:text-gray-300">
           Play the <a
-            href="http://worwordle.herokuapp.com/"
+            href="http://worwordle.netlify.app/"
             className="underline font-bold"
           >
             original Worwordle
